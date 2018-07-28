@@ -107,19 +107,23 @@ function solve(points, temp_coeff, callback) {
 };
 
 /**
- * Represents a point in two dimensions.
+ * Represents a point in two or three dimensions.
  * @class
  * @param {Number} x abscissa
  * @param {Number} y ordinate
+ * @param {Number} z applicate (default: zero)
  */
-function Point(x, y) {
+function Point(x, y, z) {
   this.x = x;
   this.y = y;
+  this.z = z || 0;
 };
 
 function distance(p, q) {
-  var dx = p.x - q.x, dy = p.y - q.y;
-  return Math.sqrt(dx*dx + dy*dy);
+  var dx = p.x - q.x,
+      dy = p.y - q.y,
+      dz = p.z - q.z;
+  return dx*dx + dy*dy + dz*dz;
 }
 
 if (typeof module === "object") {
